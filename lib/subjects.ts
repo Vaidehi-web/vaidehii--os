@@ -1,0 +1,130 @@
+import {
+  Shield,
+  Code2,
+  Terminal,
+  Cloud,
+  Factory,
+  Briefcase,
+  Rocket,
+} from "lucide-react";
+
+export const subjects = [
+  {
+    code: "SOS",
+    name: "Secure Operating System",
+    attendance: 0,
+    progress: 0,
+    color: "from-red-500 to-rose-500",
+    icon: Shield,
+    units: [
+      "Basics of Operating Systems",
+      "Process Management",
+      "Memory Management",
+      "File System & OS Security Basics",
+      "Secure OS Design",
+      "OS Hardening & Auditing",
+    ],
+  },
+
+  {
+    code: "SSD",
+    name: "Secure Software Development",
+    attendance: 0,
+    progress: 0,
+    color: "from-blue-500 to-indigo-500",
+    icon: Code2,
+    units: [
+      "Principles of Secure Software Development",
+      "Threat Modeling & Risk Assessment",
+      "Secure Software Requirements & Design",
+      "Secure Coding",
+      "Security Testing & Review",
+      "Deployment, Maintenance & DevSecOps",
+    ],
+  },
+
+  {
+    code: "EH",
+    name: "Ethical Hacking",
+    attendance: 0,
+    progress: 0,
+    color: "from-green-500 to-emerald-500",
+    icon: Terminal,
+    units: [
+      "Introduction to Ethical Hacking",
+      "Footprinting & Reconnaissance",
+      "Scanning Networks & Enumeration",
+      "System & Network Hacking",
+      "Web Application Hacking",
+      "Wireless Networks & Mobile Hacking",
+    ],
+  },
+
+  {
+    code: "CIS",
+    name: "Cloud Infrastructure Security",
+    attendance: 0,
+    progress: 0,
+    color: "from-cyan-500 to-sky-500",
+    icon: Cloud,
+    units: [
+      "Introduction",
+      "Infrastructure Security",
+      "Identity & Access Management",
+      "Cloud Security Management",
+      "Cloud Privacy",
+      "Audit & Compliance",
+    ],
+  },
+
+  {
+    code: "IA",
+    name: "Industrial Automation",
+    attendance: 0,
+    progress: 0,
+    color: "from-orange-500 to-amber-500",
+    icon: Factory,
+    units: [
+      "Automation & Industry 4.0 Fundamentals",
+      "PLC Architecture & Programming",
+      "SCADA & HMI Development",
+      "Industrial Networks & Edge Computing",
+      "OT Cybersecurity in Automation",
+      "Next-Gen Automation",
+    ],
+  },
+
+  {
+    code: "BA",
+    name: "Business Administration",
+    attendance: 0,
+    progress: 0,
+    color: "from-purple-500 to-violet-500",
+    icon: Briefcase,
+    units: [
+      "Foundations of Business",
+      "Business Environment & Strategic Analysis",
+      "Business Planning & Documentation",
+      "Products, Services & Marketing",
+      "Workplace Environment",
+      "Technology, Ethics & Sustainable Business",
+    ],
+  },
+
+  {
+    code: "EDM",
+    name: "Entrepreneurship Development & Management",
+    attendance: 0,
+    progress: 0,
+    color: "from-pink-500 to-rose-500",
+    icon: Rocket,
+    units: [
+      "Ideation",
+      "Business Planning & Financial Basics",
+      "Legal Foundations",
+      "Government Support",
+      "Fund Raising",
+      "Small Business",
+    ],
+  },
+];
