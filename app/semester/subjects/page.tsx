@@ -1,62 +1,215 @@
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, BookOpen, Sparkles } from "lucide-react";
 import { subjects } from "@/lib/subjects";
 
+
 export default function SubjectsPage() {
+
   return (
-    <main className="min-h-screen bg-gradient-to-br from-pink-50 via-rose-50 to-white">
-      <div className="max-w-7xl mx-auto px-8 py-10">
 
-        <Link
-          href="/semester"
-          className="inline-flex items-center gap-2 text-pink-500 hover:text-pink-600 font-medium"
-        >
-          <ArrowLeft size={18} />
-          Back
-        </Link>
+    <main className="
+    min-h-screen
+    bg-gradient-to-br
+    from-pink-50 via-white to-purple-50
+    p-10
+    ">
 
-        <h1 className="mt-6 text-5xl font-bold text-gray-800">
-          📚 Semester V Subjects
-        </h1>
 
-        <p className="mt-3 text-gray-500">
-          Select a subject to open its workspace.
-        </p>
+    <div className="max-w-7xl mx-auto">
 
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-7 mt-10">
 
-          {subjects.map((subject) => (
+      <Link
+        href="/semester"
+        className="
+        inline-flex items-center gap-2
+        text-pink-500
+        font-semibold
+        hover:text-pink-600
+        "
+      >
+        <ArrowLeft size={18}/>
+        Semester Hub
+      </Link>
 
-            <Link
-              key={subject.code}
-              href={`/semester/subjects/${subject.code.toLowerCase()}`}
-            >
 
-              <div className="rounded-3xl bg-white p-7 shadow-lg border border-pink-100 hover:-translate-y-2 hover:shadow-2xl transition-all">
 
-                <div
-                  className={`w-14 h-14 rounded-2xl ${subject.color} flex items-center justify-center text-white font-bold text-xl`}
-                >
-                  {subject.code}
-                </div>
+      <div className="
+      mt-8
+      rounded-3xl
+      bg-white/80
+      backdrop-blur-xl
+      border border-pink-100
+      p-10
+      shadow-xl
+      ">
 
-                <h2 className="mt-5 text-2xl font-semibold">
-                  {subject.name}
-                </h2>
 
-                <p className="mt-4 text-gray-500">
-                  {subject.units.length} Modules
-                </p>
+        <div className="flex items-center gap-3">
 
-              </div>
+          <Sparkles className="text-pink-500"/>
 
-            </Link>
-
-          ))}
+          <h1 className="
+          text-5xl
+          font-black
+          bg-gradient-to-r
+          from-pink-500
+          to-purple-600
+          bg-clip-text
+          text-transparent
+          ">
+            Semester V Subjects 📚
+          </h1>
 
         </div>
 
+
+        <p className="mt-4 text-gray-600 text-lg">
+          Cyber Security Engineering workspace
+        </p>
+
+
       </div>
+
+
+
+
+
+      <div className="
+      mt-10
+      grid
+      md:grid-cols-2
+      xl:grid-cols-3
+      gap-7
+      ">
+
+
+      {subjects.map((subject)=>(
+
+
+        <Link
+          key={subject.code}
+          href={`/semester/subjects/${subject.code.toLowerCase()}`}
+        >
+
+
+        <div className="
+        group
+        relative
+        overflow-hidden
+        rounded-3xl
+        bg-white/80
+        backdrop-blur-xl
+        p-7
+        border
+        border-pink-100
+        shadow-lg
+        transition
+        hover:-translate-y-3
+        hover:shadow-2xl
+        ">
+
+
+          <div
+          className={`
+          w-16 h-16
+          rounded-2xl
+          ${subject.color}
+          flex
+          items-center
+          justify-center
+          text-white
+          font-black
+          text-lg
+          shadow-md
+          group-hover:scale-110
+          transition
+          `}
+          >
+
+            {subject.code}
+
+          </div>
+
+
+
+
+          <h2 className="
+          mt-6
+          text-2xl
+          font-bold
+          text-gray-800
+          ">
+
+            {subject.name}
+
+          </h2>
+
+
+
+          <div className="
+          mt-4
+          flex
+          items-center
+          gap-2
+          text-gray-500
+          ">
+
+            <BookOpen size={18}/>
+
+            {subject.units.length} Modules
+
+          </div>
+
+
+
+          <div className="
+          mt-6
+          h-2
+          bg-gray-100
+          rounded-full
+          ">
+
+            <div
+            className="
+            h-2
+            w-[35%]
+            rounded-full
+            bg-gradient-to-r
+            from-pink-500
+            to-purple-500
+            "
+            />
+
+
+          </div>
+
+
+          <p className="
+          mt-2
+          text-sm
+          text-gray-400
+          ">
+            Learning progress
+          </p>
+
+
+
+        </div>
+
+
+        </Link>
+
+
+      ))}
+
+
+      </div>
+
+
+    </div>
+
+
     </main>
+
   );
 }

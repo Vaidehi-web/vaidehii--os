@@ -6,8 +6,12 @@ import {
   ClipboardList,
   FileText,
   PlayCircle,
+  Sparkles,
+  Target,
 } from "lucide-react";
+
 import { subjects } from "@/lib/subjects";
+
 
 type Props = {
   params: Promise<{
@@ -15,132 +19,312 @@ type Props = {
   }>;
 };
 
+
 export default async function SubjectPage({ params }: Props) {
+
   const { code } = await params;
+
 
   const subject = subjects.find(
     (s) => s.code.toLowerCase() === code.toLowerCase()
   );
 
+
   if (!subject) {
     notFound();
   }
 
+
   const Icon = subject.icon;
 
+
+  const quickCards = [
+    {
+      title:"Notes",
+      icon:<BookOpen />,
+      desc:"PDFs & Lecture Notes",
+    },
+    {
+      title:"Assignments",
+      icon:<ClipboardList />,
+      desc:"Pending Tasks",
+    },
+    {
+      title:"PYQs",
+      icon:<FileText />,
+      desc:"Previous Papers",
+    },
+    {
+      title:"Resources",
+      icon:<PlayCircle />,
+      desc:"Videos & References",
+    },
+  ];
+
+
+
   return (
-    <main className="min-h-screen bg-gradient-to-br from-pink-50 via-rose-50 to-white">
-      <div className="max-w-7xl mx-auto px-8 py-10">
 
-        <Link
-          href="/semester/subjects"
-          className="inline-flex items-center gap-2 text-pink-500 hover:text-pink-600 font-medium"
-        >
-          <ArrowLeft size={18} />
-          Back to Subjects
-        </Link>
+    <main className="
+    min-h-screen
+    bg-gradient-to-br
+    from-pink-50
+    via-white
+    to-purple-50
+    p-10
+    ">
 
-        {/* Header */}
 
-        <div className="mt-8 flex items-center gap-6">
+    <div className="max-w-7xl mx-auto">
 
-          <div
-            className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${subject.color} flex items-center justify-center`}
-          >
-            <Icon size={38} className="text-white" />
-          </div>
 
-          <div>
 
-            <h1 className="text-5xl font-bold text-gray-800">
+      <Link
+      href="/semester/subjects"
+      className="
+      inline-flex
+      items-center
+      gap-2
+      text-pink-500
+      font-semibold
+      "
+      >
+
+        <ArrowLeft size={18}/>
+        Back to Subjects
+
+      </Link>
+
+
+
+
+
+      <div className="
+      mt-8
+      rounded-3xl
+      bg-white/80
+      backdrop-blur-xl
+      border border-pink-100
+      shadow-xl
+      p-10
+      flex
+      gap-7
+      items-center
+      ">
+
+
+        <div className={`
+        w-24
+        h-24
+        rounded-3xl
+        bg-gradient-to-br
+        ${subject.color}
+        flex
+        items-center
+        justify-center
+        text-white
+        shadow-lg
+        `}>
+
+          <Icon size={45}/>
+
+        </div>
+
+
+
+        <div>
+
+
+          <div className="flex gap-2 items-center">
+
+            <Sparkles className="text-pink-500"/>
+
+            <h1 className="
+            text-5xl
+            font-black
+            bg-gradient-to-r
+            from-pink-500
+            to-purple-600
+            bg-clip-text
+            text-transparent
+            ">
+
               {subject.name}
+
             </h1>
 
-            <p className="mt-2 text-gray-500">
-              Attendance: {subject.attendance}% • Progress: {subject.progress}%
-            </p>
 
           </div>
+
+
+
+          <p className="mt-3 text-gray-600">
+
+          Attendance: {subject.attendance}% 
+          • Progress: {subject.progress}%
+
+          </p>
+
+
+          <div className="
+          mt-5
+          h-3
+          rounded-full
+          bg-gray-100
+          w-full
+          ">
+
+            <div
+            className="
+            h-3
+            rounded-full
+            bg-gradient-to-r
+            from-pink-500
+            to-purple-500
+            "
+            style={{
+              width:`${subject.progress}%`
+            }}
+            />
+
+          </div>
+
+
 
         </div>
 
-        {/* Quick Access */}
-
-        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-5 mt-12">
-
-          <div className="bg-white rounded-3xl p-6 shadow-lg border border-pink-100 hover:shadow-xl transition">
-            <BookOpen className="text-pink-500" size={30} />
-            <h3 className="mt-4 text-lg font-semibold">
-              Notes
-            </h3>
-            <p className="text-gray-500 text-sm mt-2">
-              PDFs & Lecture Notes
-            </p>
-          </div>
-
-          <div className="bg-white rounded-3xl p-6 shadow-lg border border-pink-100 hover:shadow-xl transition">
-            <ClipboardList className="text-violet-500" size={30} />
-            <h3 className="mt-4 text-lg font-semibold">
-              Assignments
-            </h3>
-            <p className="text-gray-500 text-sm mt-2">
-              Pending Tasks
-            </p>
-          </div>
-
-          <div className="bg-white rounded-3xl p-6 shadow-lg border border-pink-100 hover:shadow-xl transition">
-            <FileText className="text-sky-500" size={30} />
-            <h3 className="mt-4 text-lg font-semibold">
-              PYQs
-            </h3>
-            <p className="text-gray-500 text-sm mt-2">
-              Previous Year Papers
-            </p>
-          </div>
-
-          <div className="bg-white rounded-3xl p-6 shadow-lg border border-pink-100 hover:shadow-xl transition">
-            <PlayCircle className="text-red-500" size={30} />
-            <h3 className="mt-4 text-lg font-semibold">
-              Resources
-            </h3>
-            <p className="text-gray-500 text-sm mt-2">
-              YouTube & References
-            </p>
-          </div>
-
-        </div>
-
-        {/* Modules */}
-
-        <h2 className="mt-14 text-3xl font-bold text-gray-800">
-          📚 Modules
-        </h2>
-
-        <div className="mt-6 space-y-4">
-
-          {subject.units.map((unit, index) => (
-
-            <label
-              key={index}
-              className="flex items-center gap-4 bg-white rounded-2xl border border-pink-100 shadow-lg p-5 hover:shadow-xl transition cursor-pointer"
-            >
-
-              <input
-                type="checkbox"
-                className="w-5 h-5 accent-pink-500"
-              />
-
-              <span className="text-gray-700 font-medium">
-                {unit}
-              </span>
-
-            </label>
-
-          ))}
-
-        </div>
 
       </div>
+
+
+
+
+
+
+      <div className="
+      mt-10
+      grid
+      md:grid-cols-2
+      xl:grid-cols-4
+      gap-6
+      ">
+
+
+      {quickCards.map((card)=>(
+
+
+        <div
+        key={card.title}
+        className="
+        rounded-3xl
+        bg-white/80
+        p-7
+        border border-pink-100
+        shadow-lg
+        hover:-translate-y-2
+        transition
+        "
+        >
+
+
+          <div className="text-pink-500">
+            {card.icon}
+          </div>
+
+
+          <h2 className="mt-4 text-xl font-bold">
+            {card.title}
+          </h2>
+
+
+          <p className="mt-2 text-gray-500">
+            {card.desc}
+          </p>
+
+
+        </div>
+
+
+      ))}
+
+
+      </div>
+
+
+
+
+
+
+
+      <h2 className="
+      mt-14
+      text-3xl
+      font-bold
+      text-gray-800
+      ">
+
+        📚 Modules
+
+      </h2>
+
+
+
+
+      <div className="mt-6 space-y-4">
+
+
+      {subject.units.map((unit,index)=>(
+
+
+        <div
+        key={unit}
+        className="
+        flex
+        items-center
+        gap-4
+        bg-white/80
+        rounded-2xl
+        p-5
+        border
+        border-pink-100
+        shadow
+        "
+        >
+
+
+          <div className="
+          bg-pink-100
+          rounded-full
+          p-2
+          text-pink-600
+          ">
+
+            <Target size={20}/>
+
+          </div>
+
+
+          <span className="font-semibold text-gray-700">
+
+            Module {index+1}: {unit}
+
+          </span>
+
+
+        </div>
+
+
+      ))}
+
+
+      </div>
+
+
+
+    </div>
+
+
     </main>
+
   );
 }
